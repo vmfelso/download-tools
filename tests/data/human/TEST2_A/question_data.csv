@@ -1,0 +1,9 @@
+pid,CODE,DEPTH,COST,MIN_TIME,inspectCost,startTime,bonusRate,variance,branching,first_trial,colors,color_names
+0,hedgehog,0,0,7,1,Thu Apr 28 2022 16:53:27 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+1,hedgehog,0,0,7,1,Thu Apr 28 2022 16:52:19 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+2,hedgehog,0,0,7,1,Thu Apr 28 2022 16:51:34 GMT+0200 (Central European Summer Time),1,24_4_2,312,False,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+3,hedgehog,0,0,7,1,Thu Apr 28 2022 16:47:39 GMT+0200 (Central European Summer Time),1,24_4_2,312,False,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+4,hedgehog,0,0,7,1,Thu Apr 28 2022 16:44:54 GMT+0200 (Central European Summer Time),1,24_4_2,312,False,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+5,hedgehog,0,0,7,1,Thu Apr 28 2022 16:42:35 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+6,hedgehog,0,0,7,1,Thu Apr 28 2022 16:43:23 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+7,hedgehog,0,0,7,1,Thu Apr 28 2022 16:44:22 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"

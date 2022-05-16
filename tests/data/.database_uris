@@ -1,0 +1,2 @@
+TEST1="sqlite:///data/databases/first_test.db"
+TEST2="sqlite:///data/databases/second_test.db"

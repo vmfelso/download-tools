@@ -1,0 +1,2 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,pid,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time,stimulus,button_pressed
+,survey-html-form,157361,0.0-3.0-7.0,,11915,"{""gender"":""male"",""age"":""77"",""colorblind"":""2"",""effort"":""0""}",,1,,,,,,,,,,,,,,,,,

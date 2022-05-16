@@ -1,0 +1,2 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,pid,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time,stimulus,button_pressed
+,survey-text,186277,0.0-3.0-8.0,,28903,"{""Q0"":""I was very confused, here is my worker ID: debugpEmdz"",""Q1"":""No memory"",""Q2"":""Thanks!""}",,1,,,,,,,,,,,,,,,,,

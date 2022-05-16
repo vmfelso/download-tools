@@ -1,0 +1,4 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,pid,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time,stimulus,button_pressed
+True,fullscreen,2661,0.0-0.0,,,,,0,,,,,,,,,,,,,,,,,
+True,fullscreen,3670,0.0-0.0,,,,,1,,,,,,,,,,,,,,,,,
+True,fullscreen,187286,0.0-4.0,,,,,1,,,,,,,,,,,,,,,,,

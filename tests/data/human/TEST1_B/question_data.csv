@@ -1,0 +1,3 @@
+pid,CODE,DEPTH,COST,MIN_TIME,FAIRY_GOD_CONDITION,inspectCost,startTime,bonusRate,variance,branching,first_trial,colors,color_names
+0,civet,10,10,7,False,1,Thu Apr 28 2022 16:02:42 GMT+0200 (Central European Summer Time),0.002,2_4_24,312,False,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+1,fruitbat,0,5,7,True,1,Thu Apr 28 2022 15:58:55 GMT+0200 (Central European Summer Time),0.002,2_4_24,312,False,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"

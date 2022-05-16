@@ -1,0 +1,5 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,stimulus,button_pressed,pid,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time
+,html-button-response,137698,0.0-5.0,,1322.0,,,The secret code is <strong>HEDGEHOG</strong>. Please press the 'Finish HIT' button once you've copied it down to paste in the original window.,0,0,,,,,,,,,,,,,,,
+,html-button-response,219494,0.0-5.0,,1765,,,The secret code is <strong>AOUDAD</strong>. Please press the 'Finish HIT' button once you've copied it down to paste in the original window.,0,1,,,,,,,,,,,,,,,
+,html-button-response,188861,0.0-5.0,,1565,,,The secret code is <strong>FRUITBAT</strong>. Please press the 'Finish HIT' button once you've copied it down to paste in the original window.,0,3,,,,,,,,,,,,,,,
+,html-button-response,574541,0.0-5.0,,1358,,,The secret code is <strong>WALRUS</strong>. Please press the 'Finish HIT' button once you've copied it down to paste in the original window.,0,5,,,,,,,,,,,,,,,

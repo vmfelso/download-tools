@@ -1,0 +1,2 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time,name,reverse_coded,question_id,stimulus,button_pressed,pid
+,survey-text,204790,0.0-3.0-9.0,,39657,"{""Q0"":""It was very confusing"",""Q1"":""Yes"",""Q2"":""Please send me an email at firstname.lastname@somecooldomainname.com""}",,,,,,,,,,,,,,,,,,,,,,0

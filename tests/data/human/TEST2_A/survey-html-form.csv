@@ -1,0 +1,3 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time,name,reverse_coded,question_id,stimulus,button_pressed,pid
+,survey-html-form,165127.0,0.0-3.0-8.0,,14300,"{""gender"":""female"",""age"":""32"",""colorblind"":""0"",""effort"":""1""}",,,,,,,,,,,,,,,,,,,,,,0
+,survey-html-form,181086.0,0.0-3.0-8.0,,12042,"{""gender"":""female"",""age"":""55"",""colorblind"":""1"",""effort"":""1""}",,,,,,,,,,,,,,,,,,,,,,3

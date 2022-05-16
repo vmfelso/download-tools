@@ -1,0 +1,4 @@
+pid,CODE,DEPTH,COST,MIN_TIME,inspectCost,startTime,bonusRate,variance,branching,first_trial,colors,color_names
+0,hedgehog,0,0,7,1,Thu Apr 28 2022 16:53:27 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+1,hedgehog,0,0,7,1,Thu Apr 28 2022 16:52:19 GMT+0200 (Central European Summer Time),1,24_4_2,312,True,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"
+2,hedgehog,0,0,7,1,Thu Apr 28 2022 16:51:34 GMT+0200 (Central European Summer Time),1,24_4_2,312,False,"['#1b9e77', '#d95f02', '#7570b3']","['Green', 'Orange', 'Purple']"

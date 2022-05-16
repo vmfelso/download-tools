@@ -1,0 +1,5 @@
+success,trial_type,time_elapsed,internal_node_id,view_history,rt,responses,correct,stimulus,button_pressed,pid,revealed_states,num_clicks_accrued,state_rewards,trial_id,block,trial_index,score,simulation_mode,rewards,path,actions,action_times,queries,displayed_time,trial_time
+,survey-text,135356,0.0-2.0-0.0,,68527.0,"{""Q0"":""The instructions are very confusing!!!"",""Q1"":""Male"",""Q2"":""22"",""Q3"":""I might be yellow/blue colorblind, but I think it's just my computer glasses"",""Q4"":""I'm upset I didn't get to keep going""}",,,,0,,,,,,,,,,,,,,,
+,survey-text,216709,0.0-3.0-7.0,,37554,"{""Q0"":""All good"",""Q1"":""I have done similar HITs"",""Q2"":""Please, send me more HITs like this to my worker ID debugN3aY0""}",,,,1,,,,,,,,,,,,,,,
+,survey-text,186277,0.0-3.0-8.0,,28903,"{""Q0"":""I was very confused, here is my worker ID: debugpEmdz"",""Q1"":""No memory"",""Q2"":""Thanks!""}",,,,3,,,,,,,,,,,,,,,
+,survey-text,572171,0.0-3.0-8.0,,52323,"{""Q0"":""I was very confused, I thought I could only inspect one node at a time but learned that wasn't the case later in the game! :("",""Q1"":""Never participated before"",""Q2"":""Thank you!""}",,,,5,,,,,,,,,,,,,,,

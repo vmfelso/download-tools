@@ -1,0 +1,7 @@
+browser,platform,language,cond,counterbalance,codeversion,beginhit,beginexp,endhit,bonus,status,mode,pid
+firefox,linux,en-US,0,0,first_test,2022-04-28 14:04:31.782747,2022-04-28 14:05:25.731494,,0.0,2,debug,0
+firefox,linux,en-US,7,0,first_test,2022-04-28 14:07:11.947536,2022-04-28 14:07:19.340305,,0.0,2,debug,1
+firefox,linux,en-US,10,0,first_test,2022-04-28 14:02:41.613531,2022-04-28 14:03:07.721893,,0.0,2,debug,2
+firefox,linux,en-US,12,0,first_test,2022-04-28 13:58:54.320280,2022-04-28 13:58:59.360744,,0.0,2,debug,3
+firefox,linux,en-US,13,0,first_test,2022-04-28 14:03:22.578479,2022-04-28 14:04:18.689484,,0.0,2,debug,4
+firefox,linux,en-US,21,0,first_test,2022-04-28 14:11:21.486754,2022-04-28 14:12:15.692917,,0.0,2,debug,5
