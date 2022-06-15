@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="download_tools",
-    version="",
+    version="0.0.1",
     packages=["download_tools", "download_tools.plugins"],
     url="",
     license="",
