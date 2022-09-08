@@ -219,17 +219,18 @@ def save_participant_files(
     with open(labeler, "wb") as f:
         pickle.dump(pid_labeler.labels, f)
 
-    # get participant bonus
-    bonus_df = get_participant_bonus(
-        trial_data,
-        question_data,
-        general_info,
-        pid_labeler,
-        bonus_function=bonus_function,
-    )
+    # get participant bonus, if "score" in dataframe
+    if "score" in trial_data:
+        bonus_df = get_participant_bonus(
+            trial_data,
+            question_data,
+            general_info,
+            pid_labeler,
+            bonus_function=bonus_function,
+        )
 
-    # save participant bonus
-    bonus_df.to_csv(data_path.joinpath("{}.csv".format("bonuses")), index=False)
+        # save participant bonus
+        bonus_df.to_csv(data_path.joinpath("{}.csv".format("bonuses")), index=False)
 
     # prepare trial data to be saved
 
