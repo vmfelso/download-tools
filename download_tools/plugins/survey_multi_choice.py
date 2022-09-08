@@ -140,6 +140,7 @@ def score_row(
     open_ended=False,
     group_identifier="name",
     reverse_coded=False,
+    default_open_ended=None
 ):
     """
     Score survey row.
@@ -152,10 +153,14 @@ def score_row(
     :param group_identifier: group identifier to try to use with scoring_dictionary,
             e.g. "name" for questionnaire name
     :param reverse_coded: whether row is reverse coded (when scoring by dictionary)
+    param default_open_ended: default score if open ended
     :return: score (number)
     """
+    if open_ended and not default_open_ended:
+        default_open_ended = 0
+        
     # if correct scoring is in jspsych data
-    if not pd.isnull(row["correct"]):
+    if not np.all(pd.isnull(row["correct"])):
         if isinstance(row["correct"], str):
             return int(row["responses"] == row["correct"])
         elif isinstance(row["correct"], bool):
@@ -178,7 +183,7 @@ def score_row(
         if open_ended:
             # if respondents can answer things outside of the keys
             if row["responses"] not in scoring_sub_dictionary:
-                return 0
+                return default_open_ended
         elif reverse_coded:
             # reverse coded row!
             return get_reverse_score(scoring_sub_dictionary, row["responses"])
@@ -248,7 +253,7 @@ def score_mouselab_questionnaires(
     """
     Score mouselab questionnaire, returning exploded, scored dataframe.
 
-    :param mouselab_questionnaires: raw moueslab questionnaires dataframe
+    :param mouselab_questionnaires: raw mouselab questionnaires dataframe
     :param solutions_dict: solutions to mouselab questionnaires, as dictionary
     :param group_identifier: identifier to use when interpreting solutions_dict (if used)
     :return: exploded (one question per row), scored dataframe
@@ -278,3 +283,52 @@ def score_mouselab_questionnaires(
     )
 
     return mouselab_questionnaires
+
+def score_generic_questionnaires(questionnaires, solutions_dict, group_identifier, default_open_ended=None):
+    """
+    Score generic questionnaire dataframe, returning exploded, scored dataframe.
+
+    :param raw_questionnaires: raw questionnaires dataframe
+    :param solutions_dict: solutions to qestionnaires, as dictionary
+    :param group_identifier: identifier to use when interpreting solutions_dict (if used)
+    :param default_open_ended: TODO
+    :return: exploded (one question per row), scored dataframe
+    """  # noqa: E501
+    # eval fields we need -- mandatory fields
+    questionnaires["responses"] = questionnaires["responses"].apply(
+        lambda entry: eval(entry) if not pd.isnull(entry) else entry
+    )
+    questionnaires["question_id"] = questionnaires["question_id"].apply(
+        lambda entry: eval(entry) if not pd.isnull(entry) else entry
+    )
+
+    # eval possible additional fields
+    additional_columns = {}
+    for questionnaire_col in ["correct", "reverse_coded", "questions", "open_ended"]:
+        if questionnaire_col in questionnaires:
+            questionnaires[questionnaire_col] = questionnaires[questionnaire_col].apply(
+                lambda entry: eval(entry) if (isinstance(eval, str) and not pd.isnull(entry)) else entry
+            )
+            additional_columns[questionnaire_col] = np.nan
+
+    # reshape dataframe so each answer has its own row
+    exploded_questionnaires = explode_questionnaire_df(
+        questionnaires, additional_columns=additional_columns
+    )
+
+    # if columns optional columns not in, default to default
+    for optional_column in ["open_ended", "reverse_coded"]:
+        if optional_column not in exploded_questionnaires:
+            if not eval(f"default_{optional_column}"):
+                raise(ValueError(f"Default value for {optional_column} missing, but column also missing"))
+            exploded_questionnaires[optional_column] = eval(f"default_{optional_column}")
+
+    # score dataframe
+    exploded_questionnaires["score"] = exploded_questionnaires.apply(lambda row: score_row(row, solutions_dict[row["run"]],
+                                  group_identifier=group_identifier,
+                                  reverse_coded=row["reverse_coded"],
+                                  open_ended=row["open_ended"],
+                                  default_open_ended=default_open_ended[row["name"]] if row["name"] in default_open_ended else None),
+                                                                     axis=1)
+
+    return exploded_questionnaires
