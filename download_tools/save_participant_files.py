@@ -230,7 +230,7 @@ def save_participant_files(
         )
 
         # save participant bonus
-        bonus_df.to_csv(data_path.joinpath("{}.csv".format("bonuses")), index=False)
+        bonus_df.drop_duplicates().to_csv(data_path.joinpath("{}.csv".format("bonuses")), index=False)
 
     # prepare trial data to be saved
 
