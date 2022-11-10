@@ -307,7 +307,7 @@ def score_generic_questionnaires(questionnaires, solutions_dict, group_identifie
     for questionnaire_col in ["correct", "reverse_coded", "questions", "open_ended"]:
         if questionnaire_col in questionnaires:
             questionnaires[questionnaire_col] = questionnaires[questionnaire_col].apply(
-                lambda entry: eval(entry) if (isinstance(eval, str) and not pd.isnull(entry)) else entry
+                lambda entry: eval(entry) if (isinstance(entry, str) and not pd.isnull(entry)) else entry
             )
             additional_columns[questionnaire_col] = np.nan
 
