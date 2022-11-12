@@ -140,7 +140,8 @@ def score_row(
     open_ended=False,
     group_identifier="name",
     reverse_coded=False,
-    default_open_ended=None
+    default_open_ended=None,
+    accuracy_string="correct"
 ):
     """
     Score survey row.
@@ -154,17 +155,18 @@ def score_row(
             e.g. "name" for questionnaire name
     :param reverse_coded: whether row is reverse coded (when scoring by dictionary)
     param default_open_ended: default score if open ended
+    :param accuracy_string:
     :return: score (number)
     """
     if open_ended and not default_open_ended:
         default_open_ended = 0
         
     # if correct scoring is in jspsych data
-    if not np.all(pd.isnull(row["correct"])):
-        if isinstance(row["correct"], str):
-            return int(row["responses"] == row["correct"])
-        elif isinstance(row["correct"], bool):
-            return int(row["correct"])
+    if not np.all(pd.isnull(row[accuracy_string])):
+        if isinstance(row[accuracy_string], str):
+            return int(row["responses"] == row[accuracy_string])
+        elif isinstance(row[accuracy_string], bool):
+            return int(row[accuracy_string])
 
     if row[group_identifier] in scoring_dictionary:
         # if scoring dictionary in format {"Quest":{quest.1:...}}
@@ -248,7 +250,7 @@ def get_quiz_passer_ids(
 
 
 def score_mouselab_questionnaires(
-    mouselab_questionnaires, solutions_dict, group_identifier="name"
+    mouselab_questionnaires, solutions_dict, group_identifier="name", accuracy_string="correct"
 ):
     """
     Score mouselab questionnaire, returning exploded, scored dataframe.
@@ -256,6 +258,7 @@ def score_mouselab_questionnaires(
     :param mouselab_questionnaires: raw mouselab questionnaires dataframe
     :param solutions_dict: solutions to mouselab questionnaires, as dictionary
     :param group_identifier: identifier to use when interpreting solutions_dict (if used)
+    :param accuracy_string:
     :return: exploded (one question per row), scored dataframe
     """  # noqa: E501
     # eval fields we need
@@ -268,7 +271,7 @@ def score_mouselab_questionnaires(
 
     # reshape dataframe so each answer has its own row
     mouselab_questionnaires = explode_questionnaire_df(
-        mouselab_questionnaires, additional_columns={"correct": np.nan}
+        mouselab_questionnaires, additional_columns={accuracy_string: np.nan}
     )
 
     # score dataframe
@@ -284,13 +287,15 @@ def score_mouselab_questionnaires(
 
     return mouselab_questionnaires
 
-def score_generic_questionnaires(questionnaires, solutions_dict, group_identifier, default_open_ended=None):
+def score_generic_questionnaires(questionnaires, solutions_dict, group_identifier, accuracy_string="correct", open_ended=None, reverse_coded=None, default_open_ended=None):
     """
     Score generic questionnaire dataframe, returning exploded, scored dataframe.
 
     :param raw_questionnaires: raw questionnaires dataframe
     :param solutions_dict: solutions to qestionnaires, as dictionary
     :param group_identifier: identifier to use when interpreting solutions_dict (if used)
+    :param open_ended
+    :param reverse_coded
     :param default_open_ended: TODO
     :return: exploded (one question per row), scored dataframe
     """  # noqa: E501
@@ -304,11 +309,24 @@ def score_generic_questionnaires(questionnaires, solutions_dict, group_identifie
 
     # eval possible additional fields
     additional_columns = {}
-    for questionnaire_col in ["correct", "reverse_coded", "questions", "open_ended"]:
+    for questionnaire_col in [accuracy_string, "questions"] +  ["reverse_coded", "open_ended"]:
         if questionnaire_col in questionnaires:
             questionnaires[questionnaire_col] = questionnaires[questionnaire_col].apply(
                 lambda entry: eval(entry) if (isinstance(entry, str) and not pd.isnull(entry)) else entry
             )
+        else:
+            questionnaires[questionnaire_col] = np.nan
+        if questionnaire_col == "reverse_coded":
+            if reverse_coded is not None:
+                additional_columns[questionnaire_col] = reverse_coded
+            else:
+                additional_columns[questionnaire_col] = False
+        elif questionnaire_col == "open_ended":
+            if open_ended is not None:
+                additional_columns[questionnaire_col] = open_ended
+            else:
+                additional_columns[questionnaire_col] = False
+        else:
             additional_columns[questionnaire_col] = np.nan
 
     # reshape dataframe so each answer has its own row
@@ -316,18 +334,11 @@ def score_generic_questionnaires(questionnaires, solutions_dict, group_identifie
         questionnaires, additional_columns=additional_columns
     )
 
-    # if columns optional columns not in, default to default
-    for optional_column in ["open_ended", "reverse_coded"]:
-        if optional_column not in exploded_questionnaires:
-            if not eval(f"default_{optional_column}"):
-                raise(ValueError(f"Default value for {optional_column} missing, but column also missing"))
-            exploded_questionnaires[optional_column] = eval(f"default_{optional_column}")
-
     # score dataframe
     exploded_questionnaires["score"] = exploded_questionnaires.apply(lambda row: score_row(row, solutions_dict[row["run"]],
                                   group_identifier=group_identifier,
-                                  reverse_coded=row["reverse_coded"],
-                                  open_ended=row["open_ended"],
+                                  reverse_coded=reverse_coded if reverse_coded else row["reverse_coded"],
+                                  open_ended=open_ended if open_ended else row["open_ended"],
                                   default_open_ended=default_open_ended[row["name"]] if row["name"] in default_open_ended else None),
                                                                      axis=1)
 
