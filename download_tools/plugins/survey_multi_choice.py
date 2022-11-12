@@ -263,10 +263,10 @@ def score_mouselab_questionnaires(
     """  # noqa: E501
     # eval fields we need
     mouselab_questionnaires["responses"] = mouselab_questionnaires["responses"].apply(
-        lambda entry: eval(entry) if not pd.isnull(entry) else entry
+        lambda entry: eval(entry) if (isinstance(entry, str) and not pd.isnull(entry)) else entry
     )
-    mouselab_questionnaires["correct"] = mouselab_questionnaires["correct"].apply(
-        lambda entry: eval(entry) if not pd.isnull(entry) else entry
+    mouselab_questionnaires[accuracy_string] = mouselab_questionnaires[accuracy_string].apply(
+        lambda entry: eval(entry) if (isinstance(entry, str) and not pd.isnull(entry)) else entry
     )
 
     # reshape dataframe so each answer has its own row
@@ -301,10 +301,10 @@ def score_generic_questionnaires(questionnaires, solutions_dict, group_identifie
     """  # noqa: E501
     # eval fields we need -- mandatory fields
     questionnaires["responses"] = questionnaires["responses"].apply(
-        lambda entry: eval(entry) if not pd.isnull(entry) else entry
+        lambda entry: eval(entry) if (isinstance(entry, str) and not pd.isnull(entry)) else entry
     )
     questionnaires["question_id"] = questionnaires["question_id"].apply(
-        lambda entry: eval(entry) if not pd.isnull(entry) else entry
+        lambda entry: eval(entry) if (isinstance(entry, str) and not pd.isnull(entry)) else entry
     )
 
     # eval possible additional fields
