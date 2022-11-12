@@ -138,7 +138,7 @@ def score_row(
     row,
     scoring_dictionary,
     open_ended=False,
-    group_identifier="name",
+    group_identifier=None,
     reverse_coded=False,
     default_open_ended=None,
     accuracy_string="correct"
@@ -168,7 +168,7 @@ def score_row(
         elif isinstance(row[accuracy_string], bool):
             return int(row[accuracy_string])
 
-    if row[group_identifier] in scoring_dictionary:
+    if group_identifier and row[group_identifier] in scoring_dictionary:
         # if scoring dictionary in format {"Quest":{quest.1:...}}
         scoring_sub_dictionary = scoring_dictionary[row[group_identifier]][
             row["question_id"]
