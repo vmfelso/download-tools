@@ -182,11 +182,11 @@ def score_row(
 
     if isinstance(scoring_sub_dictionary, dict):
         # if in format e.g. {'very much agree':4, 'agree':3 ...}
-        if open_ended:
+        if bool(open_ended):
             # if respondents can answer things outside of the keys
             if row["responses"] not in scoring_sub_dictionary:
                 return default_open_ended
-        elif reverse_coded:
+        elif bool(reverse_coded):
             # reverse coded row!
             return get_reverse_score(scoring_sub_dictionary, row["responses"])
         return scoring_sub_dictionary[row["responses"]]
